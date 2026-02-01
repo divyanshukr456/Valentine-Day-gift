@@ -1,0 +1,478 @@
+/* ---------- Entrance animations ---------- */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .valentine-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .header-subtitle {
+    color: #ff4d6d;
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeInUp 0.7s ease-out 0.2s forwards;
+  }
+
+  .header-title {
+    color: #c9184a;
+    font-size: 38px;
+    font-weight: bold;
+    margin: 0;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.5s forwards;
+  }
+  
+  /* Hearts container */
+  .hearts {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out 0.1s forwards;
+  }
+  
+  /* Individual hearts – float + subtle bounce */
+  .hearts span {
+    font-size: 22px;
+    color: #ff758f;
+    animation: float 2s infinite ease-in-out;
+    transition: transform 0.3s ease;
+  }
+
+  .hearts span:hover {
+    transform: scale(1.3);
+  }
+  
+  /* Delay for each heart */
+  .hearts span:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .hearts span:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  .hearts span:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+  
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(-8px) scale(1.08);
+      opacity: 1;
+    }
+  }
+  /* Valentine Background */
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(
+      135deg,
+      #fff0f3,
+      #ffe5ec,
+      #ffd6e0,
+      #ffc2d1
+    );
+    background-size: 400% 400%;
+    animation: bgMove 12s ease infinite;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+  
+  /* Smooth gradient animation */
+  @keyframes bgMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Love lines bar */
+  .love-lines-bar {
+    max-width: 90%;
+    margin: 0 auto 40px;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 240, 243, 0.95) 50%, rgba(255, 229, 236, 0.9) 100%);
+    border: 2px solid rgba(255, 77, 109, 0.35);
+    border-radius: 50px;
+    box-shadow: 
+      0 4px 20px rgba(255, 77, 109, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+    position: relative;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.7s forwards;
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+  }
+
+  .love-lines-bar:hover {
+    box-shadow: 
+      0 8px 32px rgba(255, 77, 109, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transform: scale(1.01);
+  }
+
+  .love-lines-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent);
+    border-radius: 50px 50px 0 0;
+    pointer-events: none;
+  }
+
+  .love-lines-inner {
+    display: flex;
+    gap: 2rem;
+    animation: scrollLove 20s linear infinite;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .love-line {
+    color: #c9184a;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1.25rem;
+    flex-shrink: 0;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 9999px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+  }
+
+  .love-line:hover {
+    transform: scale(1.06);
+    box-shadow: 0 4px 16px rgba(255, 77, 109, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  @keyframes scrollLove {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .love-lines-bar {
+      padding: 12px 16px;
+      border-radius: 30px;
+    }
+    .love-line {
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Big straight heart on left with glowing animation */
+  .big-heart-wrap {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin-left: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.9s forwards;
+  }
+
+  .big-heart {
+    width: 300px;
+    height: 300px;
+    display: block;
+    animation: heartGlow 2s ease-in-out infinite;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    cursor: default;
+  }
+
+  .big-heart-wrap:hover .big-heart {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 45px rgba(255, 77, 109, 0.9))
+            drop-shadow(0 0 80px rgba(201, 24, 74, 0.6))
+            drop-shadow(0 0 120px rgba(255, 105, 130, 0.5));
+  }
+
+  .big-heart-path {
+    stroke: none;
+    transition: fill 0.3s ease;
+  }
+
+  @keyframes heartGlow {
+    0%, 100% {
+      filter: drop-shadow(0 0 20px rgba(255, 77, 109, 0.6))
+              drop-shadow(0 0 40px rgba(201, 24, 74, 0.4));
+      transform: scale(1);
+    }
+    50% {
+      filter: drop-shadow(0 0 35px rgba(255, 77, 109, 0.9))
+              drop-shadow(0 0 70px rgba(201, 24, 74, 0.6))
+              drop-shadow(0 0 90px rgba(255, 105, 130, 0.4));
+      transform: scale(1.02);
+    }
+  }
+
+  /* Row: heart left, story right */
+  .heart-cake-row {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 24px;
+    max-width: 100%;
+    padding: 0 20px 24px;
+    flex-wrap: wrap;
+    min-height: 320px;
+  }
+
+  /* Love story panel beside the heart */
+  .love-story {
+    flex: 1;
+    min-width: 280px;
+    max-width: 420px;
+    min-height: 280px;
+    padding: 20px 24px;
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 240, 243, 0.95) 50%, rgba(255, 229, 236, 0.9) 100%);
+    border: 2px solid rgba(255, 77, 109, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 6px 24px rgba(255, 77, 109, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 1s forwards;
+    transition: box-shadow 0.35s ease, transform 0.35s ease;
+  }
+
+  .love-story:hover {
+    box-shadow: 0 10px 32px rgba(255, 77, 109, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+  }
+
+  .story-heading {
+    color: #c9184a;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  /* Animation video stage: boy gives flower → girl accepts → they get together */
+  .story-animation-stage {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .story-animation-stage .character {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    animation-duration: 14s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  .story-animation-stage .character-avatar {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    line-height: 1;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 77, 109, 0.4);
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(255, 77, 109, 0.2);
+  }
+
+  .story-animation-stage .character-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #c9184a;
+    letter-spacing: 0.5px;
+  }
+
+  /* Boy: starts left, steps forward (giving), then moves toward girl (together) */
+  .story-animation-stage .character-boy {
+    left: 0;
+    transform-origin: center bottom;
+    animation-name: boyGiveAndTogether;
+  }
+
+  @keyframes boyGiveAndTogether {
+    0%, 18% { left: 0; transform: translateX(0) scale(1); }
+    28%, 50% { left: 0; transform: translateX(12px) scale(1.05); }
+    60%, 75% { left: 0; transform: translateX(45px) scale(1); }
+    85%, 100% { left: 0; transform: translateX(55px) scale(1); }
+  }
+
+  /* Flower: starts with boy, moves to center (giving), then to girl (accepted) */
+  .story-animation-stage .animation-flower {
+    position: absolute;
+    bottom: 42px;
+    left: 50px;
+    font-size: 1.6rem;
+    line-height: 1;
+    transform-origin: center center;
+    animation: flowerToGirl 14s ease-in-out infinite;
+  }
+
+  @keyframes flowerToGirl {
+    0%, 18% { left: 50px; opacity: 1; transform: translateY(0) scale(1); }
+    28%, 38% { left: 50%; transform: translate(-50%, 0) scale(1.1); opacity: 1; }
+    48%, 58% { left: calc(100% - 70px); opacity: 1; transform: translate(0, -4px) scale(1); }
+    68%, 100% { left: calc(100% - 70px); opacity: 0.6; transform: translate(0, 0) scale(0.9); }
+  }
+
+  /* Girl: anchored right, slight scale when accepting, then moves left (together) */
+  .story-animation-stage .character-girl {
+    left: auto;
+    right: 0;
+    transform-origin: center bottom;
+    animation-name: girlAcceptAndTogether;
+  }
+
+  @keyframes girlAcceptAndTogether {
+    0%, 45% { transform: translateX(0) scale(1); }
+    55%, 65% { transform: translateX(0) scale(1.08); }
+    75%, 85% { transform: translateX(-75px) scale(1); }
+    95%, 100% { transform: translateX(-75px) scale(1); }
+  }
+
+  /* Together hearts: appear when they get together */
+  .story-animation-stage .together-hearts {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.4rem;
+    letter-spacing: 4px;
+    opacity: 0;
+    animation: togetherHearts 14s ease-in-out infinite;
+  }
+
+  @keyframes togetherHearts {
+    0%, 70% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    78%, 92% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  .story-text {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    min-height: 0;
+  }
+
+  .story-text p {
+    margin: 0;
+    color: #8b2a4a;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+    text-align: center;
+  }
+
+  @media (max-width: 700px) {
+    .heart-cake-row {
+      flex-direction: column;
+      align-items: center;
+      min-height: 0;
+    }
+    .big-heart-wrap {
+      margin-left: 0;
+    }
+    .love-story {
+      max-width: 100%;
+      min-width: 0;
+      min-height: 0;
+    }
+  }
+
+  /* Respect user preference for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    body,
+    .hearts span,
+    .love-lines-inner,
+    .big-heart {
+      animation: none !important;
+    }
+    .header-subtitle,
+    .header-title,
+    .hearts,
+    .love-lines-bar,
+    .big-heart-wrap,
+    .love-story {
+      animation: fadeIn 0.5s ease-out forwards !important;
+    }
+    .love-line,
+    .love-lines-bar,
+    .big-heart,
+    .hearts span {
+      transition-duration: 0.01ms !important;
+    }
+    .story-animation-stage .character-boy,
+    .story-animation-stage .character-girl,
+    .story-animation-stage .animation-flower,
+    .story-animation-stage .together-hearts {
+      animation: none !important;
+    }
+    .story-animation-stage .character-boy {
+      left: 0;
+      transform: translateX(0);
+    }
+    .story-animation-stage .character-girl {
+      left: auto;
+      right: 0;
+      transform: translateX(0);
+    }
+    .story-animation-stage .animation-flower {
+      left: 50%;
+      bottom: 42px;
+      transform: translateX(-50%);
+      opacity: 1;
+    }
+    .story-animation-stage .together-hearts {
+      opacity: 0.5;
+    }
+  }
